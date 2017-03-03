@@ -1,5 +1,6 @@
 <?php
 
+// import database configuration and connection
 include "conn.php";
 
 class Contact{
@@ -11,6 +12,7 @@ class Contact{
 
 	function __construct(){}
 
+	// create new contact
 	function create($name, $email, $tel_no){
 		$this->_db = db_connect();
 		$this->_name = $this->_db->real_escape_string($name);
@@ -31,6 +33,7 @@ class Contact{
 		return $output;
 	}
 
+	// get all contacts from database
 	function read(){
 		$this->_db = db_connect();
 		$query = "SELECT * FROM contact_details ORDER BY name ASC";
@@ -39,6 +42,7 @@ class Contact{
 		return $result;
 	}
 
+	// update contact based on id and with details to update as associative array
 	function update($id, $contact_array){
 		$this->_db = db_connect();
 		$this->_name = $this->_db->real_escape_string($contact_array['name']);
@@ -60,6 +64,7 @@ class Contact{
 		return $output;
 	}
 
+	// delete a contact based on id
 	function delete($id){
 		$this->_db = db_connect();
 		$query = "DELECT FROM contact_details WHERE id=".$id;

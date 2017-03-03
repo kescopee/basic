@@ -1,5 +1,7 @@
 <?php
 
+// database configuration and connection
+
 function db_connect(){
 	$db_host = 'localhost';
 	$db_user = 'root';
